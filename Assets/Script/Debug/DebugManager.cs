@@ -40,6 +40,7 @@ public class DebugManager : SingletonMonoBehaviour<DebugManager>
     /// </summary>
     /// <param name="id">描画したいオブジェクトのID</param>
     /// <param name="pathCorners">経路情報</param>
+    /// NOTE: Debug.DrawLineを使用していない理由としてゲーム中に確認できない、太さ、位置を変更できないため
     public void DrawPath(string id, Vector3[] pathCorners)
     {
         if (string.IsNullOrEmpty(id) || pathCorners == null || pathCorners.Length < 2)
