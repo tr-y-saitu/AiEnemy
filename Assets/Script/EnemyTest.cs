@@ -16,7 +16,26 @@ public class EnemyTest : MonoBehaviour
     {
         if (target != null)
         {
+            // ナビメッシュを使用した経路探索移動
             agent.SetDestination(target.position);
+
+            // 経路探索の経路をデバッグ表示
+            DrawTagetPath();
+        }
+    }
+
+    void DrawTagetPath()
+    {
+        // 
+        if (agent.path.corners.Length < 2)
+        {
+            return;
+        }
+
+        // 
+        for (int i = 0; i < agent.path.corners.Length -1; i++)
+        {
+            Debug.DrawLine(agent.path.corners[i], agent.path.corners[i + 1], UnityEngine.Color.cyan);
         }
     }
 }
