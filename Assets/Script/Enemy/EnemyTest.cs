@@ -1,33 +1,15 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-
-[RequireComponent(typeof(LineRenderer))]
+/// <summary>
+/// エネミーの経路探索テスト
+/// </summary>
 public class EnemyTest : MonoBehaviour
 {
     static readonly float PathHeightOffset = 0.2f;
 
     [SerializeField] Transform target;      // 追いかけるターゲット
     [SerializeField] NavMeshAgent agent;    // ナビメッシュエージェント
-
-    LineRenderer lineRenderer;              // 経路探索を描画する用の線
-
-    void Start()
-    {
-        // LineRenderer を追加
-        lineRenderer = GetComponent<LineRenderer>();
-
-        // 線の太さ設定
-        lineRenderer.startWidth = 0.5f; // 線の最初の太さ
-        lineRenderer.endWidth = 0.5f;   // 線の最後の太さ
-
-        // 線のマテリアル設定（透明な白で見やすく）
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startColor = Color.cyan;
-        lineRenderer.endColor = Color.cyan;
-        lineRenderer.positionCount = 0;
-        lineRenderer.useWorldSpace = true;
-    }
 
     void Update()
     {
@@ -36,31 +18,15 @@ public class EnemyTest : MonoBehaviour
             // 移動先をターゲットに設定
             agent.SetDestination(target.position);
 
-            // パスをLineRendererで表示
-            UpdatePathLine();
+            // ナビメッシュのパスコーナーを取得してDebugManagerで描画
+            Vector3[] positions = new Vector3[agent.path.corners.Length];
+            for (int i = 0; i < agent.path.corners.Length; i++)
+            {
+                positions[i] = agent.path.corners[i] + Vector3.up * PathHeightOffset;
+            }
+
+            // Enemyの識別用IDとしてgameObject名を渡す（任意の文字列でOK）
+            DebugManager.Instance.DrawPath(gameObject.name, positions);
         }
-    }
-
-    /// <summary>
-    /// ナビメッシュエージェントのパスをLineRendererで可視化
-    /// </summary>
-    /// MEMO: Debug.DrawLineで描画していない理由はゲーム中に描画できず太さ等の変更ができないため
-    void UpdatePathLine()
-    {
-        // エージェント（線形探索しているオブジェクト）の経路（パス）を取得
-        NavMeshPath path = agent.path;
-
-        // ナビメッシュの経路コーナー数に応じて配列を作成
-        Vector3[] positions = new Vector3[path.corners.Length];
-
-        for (int i = 0; i < path.corners.Length; i++)
-        {
-            // 各コーナー位置を少し上にする
-            positions[i] = path.corners[i] + Vector3.up * PathHeightOffset;
-        }
-
-        // 位置取得して線を描画
-        lineRenderer.positionCount = positions.Length;
-        lineRenderer.SetPositions(positions);
     }
 }
