@@ -1,41 +1,66 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+
+[RequireComponent(typeof(LineRenderer))]
 public class EnemyTest : MonoBehaviour
 {
-    [SerializeField]
-    Transform target;  // 追いかける目的地
+    static readonly float PathHeightOffset = 0.2f;
 
-    [SerializeField]
-    NavMeshAgent agent; // 自身のAIコンポーネント
+    [SerializeField] Transform target;      // 追いかけるターゲット
+    [SerializeField] NavMeshAgent agent;    // ナビメッシュエージェント
 
-    /// <summary>
-    /// 更新
-    /// </summary>
+    LineRenderer lineRenderer;              // 経路探索を描画する用の線
+
+    void Start()
+    {
+        // LineRenderer を追加
+        lineRenderer = GetComponent<LineRenderer>();
+
+        // 線の太さ設定
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+
+        // 線のマテリアル設定（透明な白で見やすく）
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = Color.cyan;
+        lineRenderer.endColor = Color.cyan;
+        lineRenderer.positionCount = 0;
+        lineRenderer.useWorldSpace = true;
+    }
+
     void Update()
     {
-        if (target != null)
+        if (target != null && agent != null)
         {
-            // ナビメッシュを使用した経路探索移動
+            // 移動先をターゲットに設定
             agent.SetDestination(target.position);
 
-            // 経路探索の経路をデバッグ表示
-            DrawTagetPath();
+            // パスをLineRendererで表示
+            UpdatePathLine();
         }
     }
 
-    void DrawTagetPath()
+    /// <summary>
+    /// ナビメッシュエージェントのパスをLineRendererで可視化
+    /// </summary>
+    /// MEMO: Debug.DrawLineで描画していない理由はゲーム中に描画できず太さ等の変更ができないため
+    void UpdatePathLine()
     {
-        // 
-        if (agent.path.corners.Length < 2)
+        // エージェント（線形探索しているオブジェクト）の経路（パス）を取得
+        NavMeshPath path = agent.path;
+
+        // ナビメッシュの経路コーナー数に応じて配列を作成
+        Vector3[] positions = new Vector3[path.corners.Length];
+
+        for (int i = 0; i < path.corners.Length; i++)
         {
-            return;
+            // 各コーナー位置を少し上にする
+            positions[i] = path.corners[i] + Vector3.up * PathHeightOffset;
         }
 
-        // 
-        for (int i = 0; i < agent.path.corners.Length -1; i++)
-        {
-            Debug.DrawLine(agent.path.corners[i], agent.path.corners[i + 1], UnityEngine.Color.cyan);
-        }
+        // 位置取得して線を描画
+        lineRenderer.positionCount = positions.Length;
+        lineRenderer.SetPositions(positions);
     }
 }
