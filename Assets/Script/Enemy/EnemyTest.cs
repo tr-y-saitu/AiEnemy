@@ -18,8 +18,8 @@ public class EnemyTest : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         // 線の太さ設定
-        lineRenderer.startWidth = 0.1f;
-        lineRenderer.endWidth = 0.1f;
+        lineRenderer.startWidth = 0.5f; // 線の最初の太さ
+        lineRenderer.endWidth = 0.5f;   // 線の最後の太さ
 
         // 線のマテリアル設定（透明な白で見やすく）
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
