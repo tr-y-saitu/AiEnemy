@@ -44,5 +44,14 @@ public class PathfindingTarget : MonoBehaviour
             currentIndex = (currentIndex + 1) % patrolPoints.Length;
             agent.SetDestination(patrolPoints[currentIndex].position);
         }
+
+        Vector3[] positions = new Vector3[agent.path.corners.Length];
+        for (int i = 0; i < agent.path.corners.Length; i++)
+        {
+            positions[i] = agent.path.corners[i] + Vector3.up * 0.2f;
+        }
+
+        // Enemy‚ÌŽ¯•Ê—pID‚Æ‚µ‚ÄgameObject–¼‚ð“n‚·i”CˆÓ‚Ì•¶Žš—ñ‚ÅOKj
+        DebugManager.Instance.DrawPath(gameObject.name, positions);
     }
 }
