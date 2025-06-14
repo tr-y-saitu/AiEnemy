@@ -69,6 +69,10 @@ public class EnemyUI : MonoBehaviour
         // エネミー情報の取得
         enemyUIData = EnemyTest.GetEenemyData();
 
-
+        // UIの更新
+        positionTextGUI.text = enemyUIData.Position.ToString();
+        nameTextGUI.text = enemyUIData.Name.ToString();
+        pathfindingTypeGUI.text = enemyUIData.PathfindingType.ToString();
+        currentTargetNameGUI.text = enemyUIData.CurrentTargetName.ToString();
     }
 }
