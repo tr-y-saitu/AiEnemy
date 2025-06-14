@@ -29,4 +29,20 @@ public class EnemyTest : MonoBehaviour
             DebugManager.Instance.DrawPath(gameObject.name, positions);
         }
     }
+
+    /// <summary>
+    /// エネミーの表示してほしい情報を取得
+    /// </summary>
+    /// <returns></returns>
+    public EnemyUI.EnemyUIData GetEenemyData()
+    {
+        EnemyUI.EnemyUIData data = new EnemyUI.EnemyUIData();
+
+        data.Position = transform.position;
+        data.Name = gameObject.name;
+        data.PathfindingType = "NavMesh";
+        data.CurrentTargetName = target.name;
+
+        return data;
+    }
 }
