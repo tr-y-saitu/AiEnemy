@@ -36,7 +36,7 @@ public class EnemyUI : MonoBehaviour
     }
 
     [SerializeField]
-    EnemyTest EnemyTest;    // エネミーのスクリプト
+    Enemy enemy;    // エネミーのスクリプト
 
     [SerializeField]
     TextMeshProUGUI positionTextGUI;    // 座標情報UI
@@ -58,7 +58,7 @@ public class EnemyUI : MonoBehaviour
     void Start()
     {
         // エネミー情報の取得
-        enemyUIData = EnemyTest.GetEenemyData();
+        enemyUIData = enemy.GetEnemyData();
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class EnemyUI : MonoBehaviour
     void Update()
     {
         // エネミー情報の取得
-        enemyUIData = EnemyTest.GetEenemyData();
+        enemyUIData = enemy.GetEnemyData();
 
         // UIの更新
         positionTextGUI.text = enemyUIData.Position.ToString();
