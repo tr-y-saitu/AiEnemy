@@ -1505,6 +1505,7 @@ GameObject:
   - component: {fileID: 5696718137256012280}
   - component: {fileID: 2915412517361918632}
   - component: {fileID: 3901742677221079438}
+  - component: {fileID: 8874581260459899590}
   m_Layer: 0
   m_Name: DataInfo
   m_TagString: Untagged
@@ -1529,10 +1530,10 @@ RectTransform:
   - {fileID: 6740908221285991591}
   m_Father: {fileID: 1568104969226024692}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 0}
+  m_SizeDelta: {x: -1560, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3137832335633468747
 CanvasRenderer:
@@ -1609,6 +1610,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &8874581260459899590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5139594905695609060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 2
+  m_AspectRatio: 1.3101009
 --- !u!1 &5286598868470240922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847c1d3e2f1e01645b96bf738a6e5837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTest: {fileID: 0}
+  enemy: {fileID: 0}
   positionTextGUI: {fileID: 886922554313489963}
   nameTextGUI: {fileID: 7517471175805956209}
   pathfindingTypeGUI: {fileID: 8396068581394570177}
@@ -2232,7 +2247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847c1d3e2f1e01645b96bf738a6e5837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTest: {fileID: 0}
+  enemy: {fileID: 0}
   positionTextGUI: {fileID: 4787939535523872207}
   nameTextGUI: {fileID: 8044789193757696042}
   pathfindingTypeGUI: {fileID: 1150169788722068285}
