@@ -1,17 +1,16 @@
-using UnityEngine;
 using MBT;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine;
 
-[AddComponentMenu("")]
-[MBTNode("Example/MoveForward")]
-public class MoveForward : Leaf
+public Transform target;
+
+public override NodeResult Execute()
 {
-    public float speed = 2f;
-
-    public override NodeResult Execute()
+    if (target != null)
     {
         Vector3 forward = Vector3.forward * speed * Time.deltaTime;
-        // transform ‚Í this.gameObject ‚Ì transform
-        transform.position += forward;
+        target.position += forward;
         return NodeResult.success;
     }
+    return NodeResult.failure;
 }
