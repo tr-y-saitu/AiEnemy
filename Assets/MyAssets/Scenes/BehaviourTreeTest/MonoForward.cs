@@ -1,16 +1,16 @@
-using MBT;
-using static UnityEngine.GraphicsBuffer;
 using UnityEngine;
+using MBT;
 
-public Transform target;
-
-public override NodeResult Execute()
+[AddComponentMenu("")]
+[MBTNode("Example/MoveForward")]
+public class MonoForward : Leaf  // クラス名とファイル名が一致しているかも確認してください
 {
-    if (target != null)
+    public float speed = 2f;
+
+    public override NodeResult Execute()
     {
         Vector3 forward = Vector3.forward * speed * Time.deltaTime;
-        target.position += forward;
+        transform.position += forward;
         return NodeResult.success;
     }
-    return NodeResult.failure;
 }
