@@ -3,7 +3,7 @@ using MBT;
 
 [AddComponentMenu("")]
 [MBTNode("Example/MoveForward")]
-public class MonoForward : Leaf  // クラス名とファイル名が一致しているかも確認してください
+public class MoveForward : Leaf
 {
     public float speed = 2f;
 
@@ -11,6 +11,8 @@ public class MonoForward : Leaf  // クラス名とファイル名が一致しているかも確認し
     {
         Vector3 forward = Vector3.forward * speed * Time.deltaTime;
         transform.position += forward;
+        Debug.Log("MoveForward: 前に進んでいます。speed=" + speed + ", deltaTime=" + Time.deltaTime);
         return NodeResult.success;
     }
+
 }

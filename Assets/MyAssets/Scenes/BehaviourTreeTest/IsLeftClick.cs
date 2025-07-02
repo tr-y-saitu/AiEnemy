@@ -1,18 +1,16 @@
-using UnityEngine;
 using MBT;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 [AddComponentMenu("")]
 [MBTNode("Example/IsWPressed")]
-public class IsWPressed : Condition
+public class IsLeftClick : Condition
 {
     public BoolReference isMoving = new BoolReference(VarRefMode.DisableConstant);
-    int frameCount = 0;
 
     public override bool Check()
     {
-        frameCount++;
-        Debug.Log("isMoving = " + isMoving.Value);
-        Debug.Log("frameCount = " +  frameCount);
         return isMoving.Value;
     }
 }
