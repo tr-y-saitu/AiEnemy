@@ -50,7 +50,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -288,10 +288,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u76EE\u6A19\u60C5\u5831"
+  m_text: LIFE SUPPORT SYSTEM
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: af3ecfb66184c384f8986ef4ef0cd7e8, type: 2}
-  m_sharedMaterial: {fileID: -5775884226180232797, guid: af3ecfb66184c384f8986ef4ef0cd7e8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 38ed32bcf573041428c8e8b0b1cd175f, type: 2}
+  m_sharedMaterial: {fileID: -4864962561132609963, guid: 38ed32bcf573041428c8e8b0b1cd175f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 52.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -10
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
