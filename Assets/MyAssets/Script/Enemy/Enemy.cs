@@ -8,9 +8,9 @@ public class Enemy : MonoBehaviour
 {
     static readonly float PathHeightOffset = 0.2f;
 
-    [SerializeField] Transform target;      // 追いかけるターゲット
-    [SerializeField] NavMeshAgent agent;    // ナビメッシュエージェント
-    [SerializeField] Animator animator;     // アニメション
+    [SerializeField,Header("追いかける目標")] Transform target;      // 追いかけるターゲット
+    [SerializeField,Header("ナビメッシュエージェント")] NavMeshAgent agent;    // ナビメッシュエージェント
+    [SerializeField,Header("アニメータ")] Animator animator;     // アニメション
 
     void Start()
     {
@@ -49,9 +49,9 @@ public class Enemy : MonoBehaviour
         EnemyUI.EnemyUIData data = new EnemyUI.EnemyUIData();
 
         data.Position = transform.position;
-        data.Name = gameObject.name;
-        data.PathfindingType = "NavMesh";
-        data.CurrentTargetName = target.name;
+        data.Name = "Name:" + gameObject.name;
+        data.PathfindingType = "FindingType:" + "NavMesh";
+        data.CurrentTargetName = "TargetName:" + target.name;
 
         return data;
     }
